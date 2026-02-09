@@ -5,46 +5,47 @@
 
 body {
   margin: 0;
-  background: linear-gradient(135deg, #eef2ff, #f9fafb);
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
   color: #1f2937;
 }
 
+/* HEADER */
 header {
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  background: linear-gradient(135deg, #6366f1, #ec4899);
   color: white;
-  padding: 30px 20px;
+  padding: 28px 16px;
   text-align: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 #clock {
-  margin-top: 8px;
+  margin-top: 6px;
   opacity: 0.9;
 }
 
+/* GRID */
 .grid {
-  padding: 30px;
+  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
+/* CARD */
 .card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
 }
 
 .card h2 {
@@ -52,66 +53,77 @@ header h1 {
   font-size: 1.2rem;
 }
 
+/* INPUTS */
 input, textarea {
   width: 100%;
-  padding: 10px 12px;
-  margin: 6px 0;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  outline: none;
-}
-
-input:focus, textarea:focus {
-  border-color: #6366f1;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
 }
 
 textarea {
-  resize: none;
   height: 80px;
+  resize: none;
 }
 
+/* BUTTON */
 button {
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
-  color: white;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
   font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 button:hover {
   opacity: 0.9;
 }
 
+/* LINKS */
 .links {
   list-style: none;
   padding: 0;
 }
 
 .links li {
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
 .links a {
   text-decoration: none;
-  color: #4f46e5;
-  font-weight: 500;
+  font-weight: 600;
+  color: #6366f1;
 }
 
-.links a:hover {
-  text-decoration: underline;
-}
-
+/* NOTES */
 .notes li {
-  background: #eef2ff;
+  background: #e0e7ff;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-top: 6px;
 }
 
+/* RESULT */
 .result {
-  margin-top: 8px;
-  font-weight: 600;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ✅ MOBILE OPTIMIZATION */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 16px;
+  }
 }
