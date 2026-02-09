@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Essentials Hub</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>My Essentials Hub</h1>
+  <p id="clock"></p>
+</header>
+
+<main class="grid">
+
+  <div class="card">
+    <h2>Quick Links</h2>
+    <ul class="links">
+      <li><a href="https://gmail.com" target="_blank">📧 Gmail</a></li>
+      <li><a href="https://drive.google.com" target="_blank">☁️ Google Drive</a></li>
+      <li><a href="https://youtube.com" target="_blank">▶️ YouTube</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Government Links</h2>
+    <ul class="links">
+      <li><a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar/en" target="_blank">🆔 Download Aadhaar</a></li>
+      <li><a href="https://marriage.rs.ap.gov.in/SMR/LoginPage" target="_blank">🆔 Marriage Registration</a></li>
+      <li><a href="https://meebhoomi.ap.gov.in/" target="_blank">🆔 AP Adangal</a></li>
+      <li><a href="https://www.apeasternpower.com/payWithoutLogin" target="_blank">🆔 Pay Electricity Bill</a></li>
+      <li><a href="https://incometax.gov.in" target="_blank">💰 Income Tax</a></li>
+      <li><a href="https://parivahan.gov.in" target="_blank">🚗 Parivahan</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Notes</h2>
+    <textarea id="noteInput" placeholder="Write something..."></textarea>
+    <button onclick="saveNote()">Save Note</button>
+    <ul id="notesList" class="notes"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Age Calculator</h2>
+    <input type="date" id="dob">
+    <button onclick="calcAge()">Calculate</button>
+    <p id="ageResult" class="result"></p>
+  </div>
+
+  <div class="card">
+    <h2>Loan EMI Calculator</h2>
+    <input placeholder="Loan Amount" id="loanAmt">
+    <input placeholder="Interest Rate (%)" id="loanRate">
+    <input placeholder="Months" id="loanMonths">
+    <button onclick="calcEMI()">Calculate EMI</button>
+    <p id="emiResult" class="result"></p>
+  </div>
+
+  <div class="card">
+    <h2>Interest Calculator</h2>
+    <input type="date" id="fromDate">
+    <input type="date" id="toDate">
+    <input placeholder="Amount" id="interestAmt">
+    <input placeholder="Rate (%)" id="interestRate">
+    <button onclick="calcInterest()">Calculate</button>
+    <p id="interestResult" class="result"></p>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
