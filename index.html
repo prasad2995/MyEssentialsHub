@@ -14,6 +14,8 @@
 <header>
   <h1>My Essentials Hub</h1>
   <p id="clock"></p>
+  
+  <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
 </header>
 
 <main class="grid">
@@ -39,12 +41,19 @@
     </ul>
   </div>
 
-  <div class="card">
-    <h2>Notes</h2>
+<div class="card">
+  <h2>🔒 Notes</h2>
+
+  <input type="password" id="pinInput" placeholder="Enter PIN">
+  <button onclick="unlockNotes()">Unlock</button>
+
+  <div id="notesArea" style="display:none">
     <textarea id="noteInput" placeholder="Write something..."></textarea>
     <button onclick="saveNote()">Save Note</button>
+    <button onclick="clearNotes()" style="background:#ef4444">Clear All</button>
     <ul id="notesList" class="notes"></ul>
   </div>
+</div>
 
   <div class="card">
     <h2>Age Calculator</h2>
@@ -60,7 +69,24 @@
     <input placeholder="Months" id="loanMonths">
     <button onclick="calcEMI()">Calculate EMI</button>
     <p id="emiResult" class="result"></p>
+	<canvas id="emiChart" width="250" height="250"></canvas>
   </div>
+  
+  <div class="emi-table-wrapper">
+  <h3>EMI Breakdown</h3>
+  <table class="emi-table">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>EMI (₹)</th>
+        <th>Principal (₹)</th>
+        <th>Interest (₹)</th>
+        <th>Balance (₹)</th>
+      </tr>
+    </thead>
+    <tbody id="emiTableBody"></tbody>
+  </table>
+</div>
 
   <div class="card">
     <h2>Interest Calculator</h2>

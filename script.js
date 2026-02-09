@@ -6,28 +6,46 @@ setInterval(updateClock, 1000);
 updateClock();
 
 /* NOTES */
+const DEFAULT_PIN = "1234";
+
+function unlockNotes() {
+  const pin = document.getElementById("pinInput").value;
+  const savedPin = localStorage.getItem("notesPin") || DEFAULT_PIN;
+
+  if (pin === savedPin) {
+    document.getElementById("notesArea").style.display = "block";
+  } else {
+    alert("Wrong PIN");
+  }
+}
+
 function saveNote() {
-  const note = document.getElementById("noteInput").value.trim();
+  const note = noteInput.value.trim();
   if (!note) return;
 
   const notes = JSON.parse(localStorage.getItem("notes") || "[]");
   notes.push(note);
   localStorage.setItem("notes", JSON.stringify(notes));
-  document.getElementById("noteInput").value = "";
+  noteInput.value = "";
   loadNotes();
 }
 
 function loadNotes() {
   const notes = JSON.parse(localStorage.getItem("notes") || "[]");
-  const list = document.getElementById("notesList");
-  list.innerHTML = "";
+  notesList.innerHTML = "";
   notes.forEach(n => {
     const li = document.createElement("li");
     li.innerText = n;
-    list.appendChild(li);
+    notesList.appendChild(li);
   });
 }
-loadNotes();
+
+function clearNotes() {
+  if (confirm("Delete all notes?")) {
+    localStorage.removeItem("notes");
+    loadNotes();
+  }
+}
 
 /* ✅ AGE CALCULATOR – FIXED */
 function calcAge() {
@@ -60,14 +78,43 @@ function calcAge() {
 
 /* EMI */
 function calcEMI() {
-  const P = loanAmt.value;
+  const P = Number(loanAmt.value);
   const r = loanRate.value / 1200;
   const n = loanMonths.value;
 
   if (!P || !r || !n) return;
 
   const emi = P * r * (Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  const totalPayment = emi * n;
+  const interest = totalPayment - P;
+
   emiResult.innerText = `EMI: ₹${emi.toFixed(2)}`;
+
+  drawPieChart(P, interest);
+}
+
+function drawPieChart(principal, interest) {
+  const canvas = document.getElementById("emiChart");
+  const ctx = canvas.getContext("2d");
+  const total = principal + interest;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const principalAngle = (principal / total) * 2 * Math.PI;
+
+  // Principal
+  ctx.beginPath();
+  ctx.moveTo(125,125);
+  ctx.arc(125,125,100,0,principalAngle);
+  ctx.fillStyle = "#22c55e";
+  ctx.fill();
+
+  // Interest
+  ctx.beginPath();
+  ctx.moveTo(125,125);
+  ctx.arc(125,125,100,principalAngle,2*Math.PI);
+  ctx.fillStyle = "#ef4444";
+  ctx.fill();
 }
 
 /* INTEREST */
@@ -81,4 +128,16 @@ function calcInterest() {
     interestAmt.value * (interestRate.value / 100) * (days / 365);
 
   interestResult.innerText = `Interest: ₹${interest.toFixed(2)}`;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
 }

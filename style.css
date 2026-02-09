@@ -1,3 +1,26 @@
+:root {
+  --bg: linear-gradient(135deg, #ffecd2, #fcb69f);
+  --card: rgba(255,255,255,0.9);
+  --text: #1f2937;
+}
+
+body.dark {
+  --bg: linear-gradient(135deg, #0f172a, #020617);
+  --card: rgba(30,41,59,0.95);
+  --text: #e5e7eb;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.card {
+  background: var(--card);
+}
+``
+
 * {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
