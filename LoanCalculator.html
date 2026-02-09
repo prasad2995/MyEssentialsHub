@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Essentials Hub</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="grid">
+
+  <div class="card">
+    <h2>Loan EMI Calculator</h2>
+
+    <input placeholder="Loan Amount" id="loanAmt">
+    <input placeholder="Interest Rate (%)" id="loanRate">
+    <input placeholder="Months" id="loanMonths">
+
+    <button onclick="calcEMI()">Calculate EMI</button>
+
+    <p id="emiResult" class="result"></p>
+
+    <canvas id="emiChart" width="250" height="50"></canvas>
+
+    <!-- ✅ EMI TABLE BELOW CALCULATIONS -->
+    <div class="emi-section">
+      <h3 class="emi-title">EMI Breakdown</h3>
+
+      <div class="emi-table-container">
+        <table class="emi-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>EMI (₹)</th>
+              <th>Principal (₹)</th>
+              <th>Interest (₹)</th>
+              <th>Balance (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="emiTableBody">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

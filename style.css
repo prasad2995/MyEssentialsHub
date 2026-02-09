@@ -78,7 +78,7 @@ header h1 {
 
 /* INPUTS */
 input, textarea {
-  width: 100%;
+  width: 88%;
   padding: 12px;
   margin-top: 8px;
   border-radius: 12px;
@@ -149,4 +149,78 @@ button:hover {
   .card {
     padding: 16px;
   }
+}
+
+/* EMI SECTION */
+.emi-section {
+  margin-top: 24px;
+}
+
+.emi-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+/* TABLE CONTAINER */
+.emi-table-container {
+  max-height: 420px;      /* scroll for long tables */
+  overflow-y: auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* TABLE */
+.emi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: white;
+}
+
+/* HEADER */
+.emi-table thead th {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
+/* BODY CELLS */
+.emi-table td {
+  padding: 9px;
+  text-align: right;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+/* Month column centered */
+.emi-table td:first-child,
+.emi-table th:first-child {
+  text-align: center;
+}
+
+/* Zebra rows */
+.emi-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Hover highlight */
+.emi-table tbody tr:hover {
+  background: #eef2ff;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .emi-table {
+    font-size: 0.8rem;
+  }
+}
+
+.emi-section {
+  grid-column: 1 / -1; /* span full grid width */
 }

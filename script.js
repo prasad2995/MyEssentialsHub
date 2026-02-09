@@ -76,7 +76,7 @@ function calcAge() {
     `${years} Years, ${months} Months, ${days} Days`;
 }
 
-/* EMI */
+/* EMI 
 function calcEMI() {
   const P = Number(loanAmt.value);
   const r = loanRate.value / 1200;
@@ -91,7 +91,7 @@ function calcEMI() {
   emiResult.innerText = `EMI: ₹${emi.toFixed(2)}`;
 
   drawPieChart(P, interest);
-}
+} */
 
 function drawPieChart(principal, interest) {
   const canvas = document.getElementById("emiChart");
@@ -140,4 +140,52 @@ function toggleTheme() {
 
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
+}
+
+function calcEMI() {
+  const P = parseFloat(document.getElementById("loanAmt").value);
+  const annualRate = parseFloat(document.getElementById("loanRate").value);
+  const months = parseInt(document.getElementById("loanMonths").value);
+
+  if (!P || !annualRate || !months) {
+    alert("Please enter all values");
+    return;
+  }
+
+  const r = annualRate / 12 / 100;
+
+  // EMI formula
+  const emi =
+    (P * r * Math.pow(1 + r, months)) /
+    (Math.pow(1 + r, months) - 1);
+
+  document.getElementById("emiResult").innerText =
+    `Monthly EMI: ₹${emi.toFixed(2)}`;
+
+  generateEmiBreakdown(P, r, months, emi);
+}
+
+function generateEmiBreakdown(principal, rate, months, emi) {
+  let balance = principal;
+  const tableBody = document.getElementById("emiTableBody");
+
+  tableBody.innerHTML = ""; // clear old rows
+
+  for (let month = 1; month <= months; month++) {
+    const interest = balance * rate;
+    const principalPaid = emi - interest;
+    balance -= principalPaid;
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${month}</td>
+      <td>${emi.toFixed(2)}</td>
+      <td>${principalPaid.toFixed(2)}</td>
+      <td>${interest.toFixed(2)}</td>
+      <td>${balance < 0 ? "0.00" : balance.toFixed(2)}</td>
+    `;
+
+    tableBody.appendChild(row);
+  }
 }
